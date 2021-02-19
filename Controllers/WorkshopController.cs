@@ -24,7 +24,11 @@ namespace workshop_api.Controllers
         {
             return workshopService.getWorkshops();
         }
-
+        [HttpGet("{workshopId}")]
+        public ActionResult<WorkshopModel> getWorkShop(int workshopId)
+        {
+            return workshopService.getWorkshop(workshopId);
+        }
         [HttpPost]
         public ActionResult<WorkshopModel> createWorkShop(WorkshopModel workshopModel)
         {

@@ -61,7 +61,12 @@ namespace workshop_api.Services
 
         public WorkshopModel getWorkshop(int id)
         {
-            throw new NotImplementedException();
+            var workshopResult = workshops.SingleOrDefault(a => a.id == id);
+            if (workshopResult != null)
+            {
+                return workshopResult;
+            }
+            return null;
         }
 
         public List<WorkshopModel> getWorkshops()
