@@ -11,7 +11,7 @@ namespace workshop_api.Services
         List<WorkshopModel> getWorkshops();
         WorkshopModel getWorkshop(int id);
         WorkshopModel editWorkShop(int id, WorkshopModel workshop);
-        WorkshopModel changeStatusWorkshop(string NewStatus);
+        WorkshopModel changeStatusWorkshop(int id, string NewStatus);
         WorkshopModel createWorkshop(WorkshopModel NewStatus);
         bool deleteWorkshop(int id);
     }
