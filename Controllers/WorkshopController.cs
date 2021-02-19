@@ -34,7 +34,6 @@ namespace workshop_api.Controllers
         {
             return workshopService.createWorkshop(workshopModel);
         }
-
         [HttpDelete("{workshopId}")]
         public ActionResult<bool> deleteWorkShop(int workshopId)
         {
@@ -44,6 +43,21 @@ namespace workshop_api.Controllers
         public ActionResult<WorkshopModel> editWorkShop(int workshopId,WorkshopModel workshop)
         {
             return workshopService.editWorkShop(workshopId,workshop);
+        }
+        [HttpPut("{workshopId}/postponed")]
+        public ActionResult<WorkshopModel> postponeWorkshop(int workshopId)
+        {
+            return workshopService.changeStatusWorkshop(workshopId, "POSTPONED");
+        }
+        [HttpPut("{workshopId}/cancelled")]
+        public ActionResult<WorkshopModel> cancelWorkshop (int workshopId)
+        {
+            return workshopService.changeStatusWorkshop(workshopId, "CANCELLED");
+        }
+        [HttpPut("{workshopId}/scheduled")]
+        public ActionResult<WorkshopModel> scheduleWorkshop(int workshopId)
+        {
+            return workshopService.changeStatusWorkshop(workshopId, "SCHEDULED");
         }
     }
 }

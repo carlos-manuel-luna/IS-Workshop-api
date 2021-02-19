@@ -31,9 +31,15 @@ namespace workshop_api.Services
                 status = "CANCELLED"
             });
         }
-        public WorkshopModel changeStatusWorkshop(string NewStatus)
+        public WorkshopModel changeStatusWorkshop(int id, string NewStatus)
         {
-            throw new NotImplementedException();
+            var workshopToEdit = workshops.SingleOrDefault(a => a.id == id);
+            if (workshopToEdit != null)
+            {   
+                workshopToEdit.status = NewStatus;
+                return workshopToEdit;   
+            }
+            return null;
         }
 
         public WorkshopModel createWorkshop(WorkshopModel NewWorkShop)
