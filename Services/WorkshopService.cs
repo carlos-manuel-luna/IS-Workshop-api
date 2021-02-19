@@ -9,6 +9,7 @@ namespace workshop_api.Services
     public class WorkshopService : IWorkshopService
     {
         private List<WorkshopModel> workshops = new List<WorkshopModel>();
+        Random random = new Random();
         public WorkshopService()
         {
             workshops.Add(new WorkshopModel()
@@ -30,12 +31,18 @@ namespace workshop_api.Services
                 status = "CANCELLED"
             });
         }
-        public bool changeStatusWorkshop(string NewStatus)
+        public WorkshopModel changeStatusWorkshop(string NewStatus)
         {
             throw new NotImplementedException();
         }
 
-        public bool deleteWorkshop(string id)
+        public WorkshopModel createWorkshop(WorkshopModel NewWorkShop)
+        {
+            NewWorkShop.id = random.Next();
+            workshops.Add(NewWorkShop);
+            return NewWorkShop;        
+        }
+        public WorkshopModel deleteWorkshop(string id)
         {
             throw new NotImplementedException();
         }
@@ -46,6 +53,10 @@ namespace workshop_api.Services
         public List<WorkshopModel> getWorkshops()
         {
             return workshops;
+        }
+        bool IWorkshopService.deleteWorkshop(string id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

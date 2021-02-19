@@ -10,7 +10,8 @@ namespace workshop_api.Services
     {
         List<WorkshopModel> getWorkshops();
         WorkshopModel getWorkshop(string id);
-        bool changeStatusWorkshop(string NewStatus);
+        WorkshopModel changeStatusWorkshop(string NewStatus);
+        WorkshopModel createWorkshop(WorkshopModel NewStatus);
         bool deleteWorkshop(string id);
     }
 }
