@@ -30,5 +30,11 @@ namespace workshop_api.Controllers
         {
             return workshopService.createWorkshop(workshopModel);
         }
+
+        [HttpDelete("{workshopId}")]
+        public ActionResult<bool> createWorkShop(int workshopId)
+        {
+            return workshopService.deleteWorkshop(workshopId);
+        }
     }
 }

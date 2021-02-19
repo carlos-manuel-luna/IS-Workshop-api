@@ -42,21 +42,25 @@ namespace workshop_api.Services
             workshops.Add(NewWorkShop);
             return NewWorkShop;        
         }
-        public WorkshopModel deleteWorkshop(string id)
+        public WorkshopModel getWorkshop(int id)
         {
             throw new NotImplementedException();
         }
-        public WorkshopModel getWorkshop(string id)
-        {
-            throw new NotImplementedException();
-        }
+
         public List<WorkshopModel> getWorkshops()
         {
             return workshops;
         }
-        bool IWorkshopService.deleteWorkshop(string id)
+
+        bool IWorkshopService.deleteWorkshop(int id)
         {
-            throw new NotImplementedException();
+            var workshopToDelete = workshops.SingleOrDefault(a => a.id == id);
+            if (workshopToDelete == null)
+            {
+                return false;
+            }
+            workshops.Remove(workshopToDelete);
+            return true;
         }
     }
 }

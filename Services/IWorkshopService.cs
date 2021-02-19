@@ -9,9 +9,9 @@ namespace workshop_api.Services
     public interface IWorkshopService
     {
         List<WorkshopModel> getWorkshops();
-        WorkshopModel getWorkshop(string id);
+        WorkshopModel getWorkshop(int id);
         WorkshopModel changeStatusWorkshop(string NewStatus);
         WorkshopModel createWorkshop(WorkshopModel NewStatus);
-        bool deleteWorkshop(string id);
+        bool deleteWorkshop(int id);
     }
 }
