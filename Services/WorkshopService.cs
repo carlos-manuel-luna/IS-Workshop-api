@@ -42,6 +42,23 @@ namespace workshop_api.Services
             workshops.Add(NewWorkShop);
             return NewWorkShop;        
         }
+
+        public WorkshopModel editWorkShop(int id, WorkshopModel workshop)
+        {
+            if (id == workshop.id)
+            { 
+                var workShopToEdit = workshops.SingleOrDefault(a => a.id == id);
+                if (workShopToEdit != null)
+                {
+                    workShopToEdit.id = workshop.id;
+                    workShopToEdit.name = workshop.name;
+                    workShopToEdit.status = workshop.status;
+                }
+                return workShopToEdit;
+            }
+            return null;
+        }
+
         public WorkshopModel getWorkshop(int id)
         {
             throw new NotImplementedException();
