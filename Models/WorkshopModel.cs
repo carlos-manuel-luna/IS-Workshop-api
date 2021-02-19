@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace workshop_api.Models
 {
-    public class Class
+    public class WorkshopModel
     {
         public int id;
         public string name;
-        public WorkshopStatusEnum status;
+        public string status;
     }
 }
