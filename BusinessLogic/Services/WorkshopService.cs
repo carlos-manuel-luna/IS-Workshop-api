@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,32 +9,15 @@ namespace workshop_api.Services
 {
     public class WorkshopService : IWorkshopService
     {
-        private List<WorkshopModel> workshops = new List<WorkshopModel>();
         Random random = new Random();
-        public WorkshopService()
+        private readonly IDataWorkshop _DataWorkshops;
+        public WorkshopService(IDataWorkshop workshopsData)
         {
-            workshops.Add(new WorkshopModel()
-            {       
-                id = 1,
-                name = "Training Tx: Sesión 6 - IT",
-                status = "SCHEDULED" 
-            });
-            workshops.Add(new WorkshopModel()
-            {
-                id = 2,
-                name = "Training Tx: Sesión 7 - Soft Skills - Comunicaciones Efectivas",
-                status = "POSTPONED"
-            });
-            workshops.Add(new WorkshopModel()
-            {
-                id = 3,
-                name = "Training Tx: Sesión 9 - SoftSkills and Rules",
-                status = "CANCELLED"
-            });
+            this._DataWorkshops = workshopsData;
         }
         public WorkshopModel changeStatusWorkshop(int id, string NewStatus)
         {
-            var workshopToEdit = workshops.SingleOrDefault(a => a.id == id);
+            var workshopToEdit = _DataWorkshops.getWorkshop(id);
             if (workshopToEdit != null)
             {   
                 workshopToEdit.status = NewStatus;
@@ -45,7 +29,7 @@ namespace workshop_api.Services
         public WorkshopModel createWorkshop(WorkshopModel NewWorkShop)
         {
             NewWorkShop.id = random.Next();
-            workshops.Add(NewWorkShop);
+            _DataWorkshops.addWorkshop(NewWorkShop);
             return NewWorkShop;        
         }
 
@@ -53,7 +37,7 @@ namespace workshop_api.Services
         {
             if (id == workshop.id)
             { 
-                var workShopToEdit = workshops.SingleOrDefault(a => a.id == id);
+                var workShopToEdit = _DataWorkshops.getWorkshop(id);
                 if (workShopToEdit != null)
                 {
                     workShopToEdit.id = workshop.id;
@@ -67,7 +51,7 @@ namespace workshop_api.Services
 
         public WorkshopModel getWorkshop(int id)
         {
-            var workshopResult = workshops.SingleOrDefault(a => a.id == id);
+            var workshopResult = _DataWorkshops.getWorkshop(id);
             if (workshopResult != null)
             {
                 return workshopResult;
@@ -77,17 +61,17 @@ namespace workshop_api.Services
 
         public List<WorkshopModel> getWorkshops()
         {
-            return workshops;
+            return _DataWorkshops.getWorkshops();
         }
 
         bool IWorkshopService.deleteWorkshop(int id)
         {
-            var workshopToDelete = workshops.SingleOrDefault(a => a.id == id);
-            if (workshopToDelete == null)
+            WorkshopModel result = _DataWorkshops.getWorkshop(id);
+            if (result == null)
             {
                 return false;
             }
-            workshops.Remove(workshopToDelete);
+            _DataWorkshops.deleteWorkshop(id);
             return true;
         }
     }
