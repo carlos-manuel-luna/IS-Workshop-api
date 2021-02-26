@@ -27,7 +27,7 @@ namespace workshop_api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddSingleton<IWorkshopService, WorkshopService>();
+            services.AddTransient<IWorkshopService, WorkshopService>();
 
         }
 
