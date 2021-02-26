@@ -21,9 +21,8 @@ namespace workshop_api.Services
             if (workshopToEdit != null)
             {   
                 workshopToEdit.status = NewStatus;
-                return workshopToEdit;   
             }
-            return null;
+            return workshopToEdit;   
         }
 
         public WorkshopModel createWorkshop(WorkshopModel NewWorkShop)
@@ -35,6 +34,7 @@ namespace workshop_api.Services
 
         public WorkshopModel editWorkShop(int id, WorkshopModel workshop)
         {
+            WorkshopModel result = null;
             if (id == workshop.id)
             { 
                 var workShopToEdit = _DataWorkshops.getWorkshop(id);
@@ -44,19 +44,15 @@ namespace workshop_api.Services
                     workShopToEdit.name = workshop.name;
                     workShopToEdit.status = workshop.status;
                 }
-                return workShopToEdit;
+                result = workShopToEdit;
             }
-            return null;
+            return result;
         }
 
         public WorkshopModel getWorkshop(int id)
         {
             var workshopResult = _DataWorkshops.getWorkshop(id);
-            if (workshopResult != null)
-            {
-                return workshopResult;
-            }
-            return null;
+            return workshopResult;
         }
 
         public List<WorkshopModel> getWorkshops()
@@ -66,13 +62,14 @@ namespace workshop_api.Services
 
         bool IWorkshopService.deleteWorkshop(int id)
         {
+            bool resultResponse = true;
             WorkshopModel result = _DataWorkshops.getWorkshop(id);
             if (result == null)
             {
-                return false;
+                resultResponse = false;
             }
             _DataWorkshops.deleteWorkshop(id);
-            return true;
+            return resultResponse;
         }
     }
 }
