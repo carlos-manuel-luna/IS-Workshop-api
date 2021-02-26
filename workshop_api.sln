@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "workshop_api", "IS-Workshop-api\workshop_api.csproj", "{E3DC99FC-AE74-450D-BC05-A2D332D3C353}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{9A4B25E5-2C56-4CE0-AECD-43C6D4DC6E23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{9A4B25E5-2C56-4CE0-AECD-43C6D4DC6E23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{972E6D37-9533-43A8-BDBA-C8F4E8F21875}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{9A4B25E5-2C56-4CE0-AECD-43C6D4DC6E23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A4B25E5-2C56-4CE0-AECD-43C6D4DC6E23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A4B25E5-2C56-4CE0-AECD-43C6D4DC6E23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{972E6D37-9533-43A8-BDBA-C8F4E8F21875}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{972E6D37-9533-43A8-BDBA-C8F4E8F21875}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{972E6D37-9533-43A8-BDBA-C8F4E8F21875}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{972E6D37-9533-43A8-BDBA-C8F4E8F21875}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
