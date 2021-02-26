@@ -12,52 +12,52 @@ namespace workshop_api.Controllers
     [ApiController]
     public class WorkshopController : ControllerBase
     {
-        private readonly IWorkshopService workshopService;
+        private readonly IWorkshopService _workshopService;
 
         public WorkshopController(IWorkshopService workshopService)
         {
-            this.workshopService = workshopService;
+            this._workshopService = workshopService;
         }
 
         [HttpGet]
         public ActionResult<List<WorkshopModel>> getWorkShops()
         {
-            return workshopService.getWorkshops();
+            return _workshopService.getWorkshops();
         }
         [HttpGet("{workshopId}")]
         public ActionResult<WorkshopModel> getWorkShop(int workshopId)
         {
-            return workshopService.getWorkshop(workshopId);
+            return _workshopService.getWorkshop(workshopId);
         }
         [HttpPost]
         public ActionResult<WorkshopModel> createWorkShop(WorkshopModel workshopModel)
         {
-            return workshopService.createWorkshop(workshopModel);
+            return _workshopService.createWorkshop(workshopModel);
         }
         [HttpDelete("{workshopId}")]
         public ActionResult<bool> deleteWorkShop(int workshopId)
         {
-            return workshopService.deleteWorkshop(workshopId);
+            return _workshopService.deleteWorkshop(workshopId);
         }
         [HttpPut("{workshopId}")]
         public ActionResult<WorkshopModel> editWorkShop(int workshopId,WorkshopModel workshop)
         {
-            return workshopService.editWorkShop(workshopId,workshop);
+            return _workshopService.editWorkShop(workshopId,workshop);
         }
         [HttpPut("{workshopId}/postponed")]
         public ActionResult<WorkshopModel> postponeWorkshop(int workshopId)
         {
-            return workshopService.changeStatusWorkshop(workshopId, "POSTPONED");
+            return _workshopService.changeStatusWorkshop(workshopId, "POSTPONED");
         }
         [HttpPut("{workshopId}/cancelled")]
         public ActionResult<WorkshopModel> cancelWorkshop (int workshopId)
         {
-            return workshopService.changeStatusWorkshop(workshopId, "CANCELLED");
+            return _workshopService.changeStatusWorkshop(workshopId, "CANCELLED");
         }
         [HttpPut("{workshopId}/scheduled")]
         public ActionResult<WorkshopModel> scheduleWorkshop(int workshopId)
         {
-            return workshopService.changeStatusWorkshop(workshopId, "SCHEDULED");
+            return _workshopService.changeStatusWorkshop(workshopId, "SCHEDULED");
         }
     }
 }
